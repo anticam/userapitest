@@ -34,8 +34,7 @@ Waiting for app to start...
 name:                userapitest
 requested state:     started
 isolation segment:   trial
-routes:              userapitest-appreciative-bilby-wy.cfapps.eu10.hana.ondemand.com
-last uploaded:       Sat 20 Feb 17:07:17 GMT 2021
+routes:              userapitest-<random>.cfapps.<region>.hana.ondemand.com
 stack:               cflinuxfs3
 buildpacks:          nodejs
 ```
@@ -43,5 +42,50 @@ buildpacks:          nodejs
 Open that as a URL in your browser. You should information shown similar to what was described in the blog post.
 
 ---
+***Increase logging level
+
+<https://www.npmjs.com/package/@sap/approuter/v/11.1.0#troubleshooting>
+
+Approuter logging level
+
+```shell
+cf set-env userapitest XS_APP_LOG_LEVEL debug
+```
+
+Log incoming, outgoing requests
+
+```shell
+cf set-env userapitest REQUEST_TRACE debug
+```
+
+NodeJS minimal logging level
+
+```shell
+cf set-env userapitest CF_NODEJS_LOGGING_LEVEL debug
+```
+
+Packages using debug package
+
+```shell
+cf set-env userapitest DEBUG *
+```
+
+Node.js traces
+
+```shell
+cf set-env userapitest NODE_DEBUG debug
+```
+
+After changes restage the application
+
+```shell
+cf restage userapitest
+```
+
+Getting application log:
+
+```shell
+cf logs userapitest --recent
+```
 
 [More info about this repository](https://github.com/SAP-samples/sap-tech-bytes)
