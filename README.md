@@ -1,5 +1,7 @@
 # Approuter User API Service
 
+Content from github repository: <https://github.com/https://github.com/SAP-samples/sap-tech-bytes/tree/2021-02-20-approuter-user-api-service>
+
 The content in this branch accompanies the post [SAP Tech Bytes: Approuter User API Service](https://blogs.sap.com/2021/02/20/sap-tech-bytes-approuter-user-api-service/).
 
 To try this out for yourself, once you have this branch of the repo locally, follow these steps.
