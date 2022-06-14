@@ -42,7 +42,7 @@ buildpacks:          nodejs
 Open that as a URL in your browser. You should information shown similar to what was described in the blog post.
 
 ---
-***Increase logging level
+**Increase logging level
 
 <https://www.npmjs.com/package/@sap/approuter/v/11.1.0#troubleshooting>
 
