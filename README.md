@@ -18,6 +18,42 @@ cf login
 cf create-service xsuaa application xsuaa-application -c xs-security.json
 ```
 
+check created service instance:
+
+```shell
+cf service xsuaa-application
+Showing info of service xsuaa-application in org 1111trial / space dev as <mail>...
+
+name:            xsuaa-application
+guid:            d8c37255-3eaa-461a-87bd-a46e02a23b9f
+type:            managed
+broker:          sm-xsuaa-333078da-dff3-4cf8-aef6-c089b0560467
+offering:        xsuaa
+plan:            application
+tags:
+offering tags:   xsuaa
+description:     Manage application authorizations and trust to identity providers.
+documentation:   <https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/6373bb7a96114d619bfdfdc6f505d1b9.html>
+dashboard url:
+
+Showing status of last operation:
+   status:    create succeeded
+   message:
+   started:   2022-06-14T09:55:07Z
+   updated:   2022-06-14T09:55:07Z
+
+Showing bound apps:
+   There are no bound apps for this service instance.
+
+Showing sharing info:
+   This service instance is not currently being shared.
+
+   Service instance sharing is disabled for this service offering.
+
+Showing upgrade status:
+   Upgrades are not supported by this broker.
+```
+
 **Create and deploy the app**
 
 ```shell
@@ -40,6 +76,51 @@ buildpacks:          nodejs
 ```
 
 Open that as a URL in your browser. You should information shown similar to what was described in the blog post.
+
+check xsuaa instance, note that application is bound:
+
+```shell
+type:            web
+sidecars:
+instances:       1/1
+memory usage:    256M
+start command:   npm start
+     state     since                  cpu    memory   disk     details
+# 0   running   2022-06-14T10:04:12Z   0.0%   0 of 0   0 of 0
+
+cf service xsuaa-application
+Showing info of service xsuaa-application in org 1111trial / space dev as mail...
+
+name:            xsuaa-application
+guid:            d8c37255-3eaa-461a-87bd-a46e02a23b9f
+type:            managed
+broker:          sm-xsuaa-333078da-dff3-4cf8-aef6-c089b0560467
+offering:        xsuaa
+plan:            application
+tags:
+offering tags:   xsuaa
+description:     Manage application authorizations and trust to identity providers.
+documentation:   <https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/6373bb7a96114d619bfdfdc6f505d1b9.html>
+dashboard url:
+
+Showing status of last operation:
+   status:    create succeeded
+   message:
+   started:   2022-06-14T09:55:07Z
+   updated:   2022-06-14T09:55:07Z
+
+Showing bound apps:
+   name          binding name   status             message
+   userapitest                  create succeeded
+
+Showing sharing info:
+   This service instance is not currently being shared.
+
+   Service instance sharing is disabled for this service offering.
+
+Showing upgrade status:
+   Upgrades are not supported by this broker.
+```
 
 ---
 **Increase logging level**
